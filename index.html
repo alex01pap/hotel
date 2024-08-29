@@ -34,7 +34,29 @@
 </head>
 
 <body>
+	<!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwG2TPDlmgpw2qa3FfiwcIFOI-TYKHApM&libraries=places"></script>
 	
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById('address');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+
+            autocomplete.setFields(['address_component', 'geometry', 'icon', 'name']);
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+            });
+        }
+
+        // Initialize the Google Maps Autocomplete when the window loads
+        google.maps.event.addDomListener(window, 'load', initAutocomplete);
+    </script>
+		 
 	<div id="preloader">
 		<div data-loader="circle-side"></div>
 	</div><!-- /Preload -->
@@ -97,7 +119,7 @@
 								</div>
 								<!-- Address Form-->
 								<div class="form-group">
-									<input type="autocomplete" name="address" class="form-control required" placeholder="Select Hotel Area">
+									<input type="address" name="address" class="form-control required" placeholder="Select Hotel Area">
 									<i class="icon_pin_alt"></i>
 								</div>
 								<!-- Room Type Form-->
