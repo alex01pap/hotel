@@ -42,6 +42,7 @@
 						$headers = "From: ALFA Hotels <noreply@atravel.gr>";
 						$message = "DETAILS\n";
 						$message .= "\nCheck in > Check out: " . $_POST['dates'];
+						$message .= "\nLocation: " . $_POST['address'];
 						$message .= "\nRoom type: " . $_POST['room_type'];
 						$message .= "\nAdults: " . $_POST['adults'];
 						$message .= "\nChilds: " . $_POST['child'];
