@@ -43,7 +43,6 @@
 						$message = "DETAILS\n";
 						$message .= "\nCheck in > Check out: " . $_POST['dates'];
 						$message .= "\nLocation: " . $_POST['address'];
-						$message .= "\nRoom type: " . $_POST['group_type'];
 						$message .= "\nAdults: " . $_POST['adults'];
 						$message .= "\nChilds: " . $_POST['child'];
 						if( isset( $_POST['notes'] ) && $_POST['notes']) {
@@ -57,7 +56,8 @@
 							};
 	
 						$message .= "\nGroup name: " . $_POST['group_name'];
-						$message .= "\nLast name: " . $_POST['your_name'];
+						$message .= "\nRoom type: " . $_POST['group_type'];
+						$message .= "\nYour name: " . $_POST['your_name'];
 						$message .= "\nEmail: " . $_POST['email'];
 						$message .= "\nTelephone: " . $_POST['telephone'];
 						$message .= "\nTerms and conditions accepted: " . $_POST['terms']. "\n";
