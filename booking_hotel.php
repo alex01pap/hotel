@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Melkin, Booking and Reservation form Wizard by Ansonika.">
-    <meta name="author" content="Ansonika">
-    <title>Melkin | The booking form Wizard</title>
+    <meta name="description" content="Effortless Reservations for Groups, From Start to Stay">
+    <meta name="author" content="ALFA Hotels">
+    <title>ALFA Hotels | Group Hotel Booking Made Easy</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon2.ico" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
@@ -39,7 +39,7 @@
 						$mail = $_POST['email'];
 						$to = "alex01pap@gmail.com";/* YOUR EMAIL HERE */
 						$subject = "Booking request from ALFA Hotels";
-						$headers = "From: Melkin <noreply@yourdomain.com>";
+						$headers = "From: ALFA Hotels <noreply@atravel.gr>";
 						$message = "DETAILS\n";
 						$message .= "\nCheck in > Check out: " . $_POST['dates'];
 						$message .= "\nRoom type: " . $_POST['room_type'];
@@ -67,10 +67,10 @@
 						//Confirmation page
 						$user = "$mail";
 						$usersubject = "Thank You";
-						$userheaders = "From: info@melkin.com\n";
+						$userheaders = "From: business@atravel.gr\n";
 						/*$usermessage = "Thank you for your time. Your quotation request is successfully submitted.\n"; WITH OUT SUMMARY*/
 						//Confirmation page WITH  SUMMARY
-						$usermessage = "Thank you for your time. Your request is successfully submitted. We will reply shortly or call us at 043 3423 444.\n\nBELOW A SUMMARY\n\n$message"; 
+						$usermessage = "Thank you for your time. Your request is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
 						mail($user,$usersubject,$usermessage,$userheaders);
 	
 ?>
