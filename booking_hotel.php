@@ -39,7 +39,7 @@
 						$mail = $_POST['email'];
 						$to = "alex01pap@gmail.com";/* YOUR EMAIL HERE */
 						$subject = "Booking request from ALFA Hotels";
-						$headers = "From: Melkin <noreply@yourdomain.com>";
+						$headers = "From: ALFA Hotels <noreply@atravel.gr>";
 						$message = "DETAILS\n";
 						$message .= "\nCheck in > Check out: " . $_POST['dates'];
 						$message .= "\nRoom type: " . $_POST['room_type'];
