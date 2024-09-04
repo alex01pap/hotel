@@ -74,42 +74,7 @@
 						$usermessage = "Thank you for your time. Your request is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
 						mail($user,$usersubject,$usermessage,$userheaders);
 
-						// Send data to Zapier webhook using PHP cURL
-					        $webhook_url = 'https://hooks.zapier.com/hooks/catch/9950511/2tg9gob/';
-					        $webhook_data = array(
-					            'dates' => $_POST['dates'],
-					            'address' => $_POST['address'],
-					            'adults' => $_POST['adults'],
-					            'child' => $_POST['child'],
-					            'notes' => $_POST['notes'],
-					            'group_name' => $_POST['group_name'],
-					            'group_type' => $_POST['group_type'],
-					            'your_name' => $_POST['your_name'],
-					            'email' => $_POST['email'],
-					            'telephone' => $_POST['telephone']
-					        );
-					
-						// Prepare the data for sending (JSON encode the data)
-						        $options = array(
-						            'http' => array(
-						                'header'  => "Content-Type: application/json\r\n",
-						                'method'  => 'POST',
-						                'content' => json_encode($webhook_data),
-						            ),
-						        );
 						
-						        // Create a stream context
-						        $context  = stream_context_create($options);
-						
-						        // Send the request to the Zapier webhook
-						        $result = file_get_contents($webhook_url, false, $context);
-						
-						        // Check if the webhook submission was successful
-						        if ($result === FALSE) {
-						            // Handle webhook error
-						            echo "There was an issue submitting your request to Zapier.";
-						        }
-						    }
 ?>
 <!-- END SEND MAIL SCRIPT -->   
 
