@@ -8,10 +8,7 @@
     <meta name="description" content="Effortless Reservations for Groups, From Start to Stay">
     <meta name="author" content="ALFA Hotels">
     <title>ALFA Hotels | Group Hotel Booking Made Easy</title>
-  
-	<!-- reCAPTCHA Script -->
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdMRzYqAAAAAOhrc7k3V5-XSBxa03lRjeLmSOFG"></script>
-	
+ 
 	
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon2.ico" type="image/x-icon">
@@ -224,14 +221,7 @@
 						<div id="bottom-wizard">
 							<button type="button" name="backward" class="backward">Prev</button>
 							<button type="button" name="forward" class="forward">Next</button>
-							<!-- reCAPTCHA protected submit button -->
-							<button class="g-recaptcha" 
-							        data-sitekey="6LdMRzYqAAAAAOhrc7k3V5-XSBxa03lRjeLmSOFG" 
-							        data-callback='onSubmit' 
-							        data-action='submit'>
-							    Submit
-							</button>
-							<!-- /<button type="submit" name="process" class="submit">Submit</button> -->
+							<button type="submit" name="process" class="submit">Submit</button>
 						</div>
 						<!-- /bottom-wizard -->
 					</form>
@@ -321,13 +311,6 @@
 
 	<!-- Wizard script -->
 	<script src="js/booking_hotel_func.js"></script>
-	
-	<!-- Callback function for reCAPTCHA -->
-	<script>
-		function onSubmit(token) {
-			document.getElementById("wrapped").submit();  // Submit the form after reCAPTCHA validation
-		}
-	</script>
-	
+
 </body>
 </html>
