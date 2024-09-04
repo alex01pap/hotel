@@ -73,7 +73,37 @@
 						//Confirmation page WITH  SUMMARY
 						$usermessage = "Thank you for your time. Your request is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
 						mail($user,$usersubject,$usermessage,$userheaders);
-	
+
+						// Send data to Zapier webhook using PHP cURL
+					        $webhook_url = 'https://hooks.zapier.com/hooks/catch/9950511/2tg9gob/';
+					        $webhook_data = array(
+					            'dates' => $_POST['dates'],
+					            'address' => $_POST['address'],
+					            'adults' => $_POST['adults'],
+					            'child' => $_POST['child'],
+					            'notes' => $_POST['notes'],
+					            'group_name' => $_POST['group_name'],
+					            'group_type' => $_POST['group_type'],
+					            'your_name' => $_POST['your_name'],
+					            'email' => $_POST['email'],
+					            'telephone' => $_POST['telephone']
+					        );
+					
+					        // Use cURL to send the form data to the webhook
+					        $ch = curl_init($webhook_url);
+					        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+					        curl_setopt($ch, CURLOPT_POST, true);
+					        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($webhook_data));
+					        $result = curl_exec($ch);
+					        curl_close($ch);
+					
+					        // Check if Zapier webhook submission was successful
+					        if ($result === FALSE) {
+					            // Handle webhook error
+					            echo "There was an issue submitting your request to Zapier.";
+					        }
+					    }
 ?>
 <!-- END SEND MAIL SCRIPT -->   
 
