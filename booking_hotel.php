@@ -100,13 +100,7 @@
 						        $result = curl_exec($ch);
 						        curl_close($ch);
 						
-						        // Check if Zapier webhook submission was successful
-						        if ($result === FALSE) {
-						            // Handle webhook error
-						            echo "There was an issue submitting your request to Zapier.";
-						        } else {
-						            echo "Success! Data was sent to Zapier.";
-						        }
+
 						
 ?>
 <!-- END SEND MAIL SCRIPT -->   
