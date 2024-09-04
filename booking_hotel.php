@@ -36,24 +36,6 @@
 </head>
 <body onLoad="setTimeout('delayedRedirect()', 8000)" style="background-color:#fff;">
 <?php
-
-						// Google reCAPTCHA secret key
-						$recaptcha_secret = '6LdMRzYqAAAAAOhrc7k3V5-XSBxa03lRjeLmSOFG'; // Replace with your Google reCAPTCHA secret key
-						// Verify reCAPTCHA
-						
-						    if (isset($_POST['g-recaptcha-response'])) {
-						        $recaptcha_response = $_POST['g-recaptcha-response'];
-						
-						        // Make API request to verify reCAPTCHA response
-						        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
-						        $responseKeys = json_decode($response, true);
-						
-						        if (intval($responseKeys["success"]) !== 1) {
-						            // reCAPTCHA failed - handle the error
-						            echo "CAPTCHA verification failed. Please go back and try again.";
-						        } else {
-						            // reCAPTCHA passed, process the form   
-
 						$mail = $_POST['email'];
 						$to = "alex01pap@gmail.com";/* YOUR EMAIL HERE */
 						$subject = "Booking request from ALFA Hotels";
@@ -91,33 +73,7 @@
 						//Confirmation page WITH  SUMMARY
 						$usermessage = "Thank you for your time. Your request is successfully submitted. We will reply shortly.\n\nBELOW A SUMMARY\n\n$message"; 
 						mail($user,$usersubject,$usermessage,$userheaders);
-						
-						// Send data to Zapier webhook using PHP cURL
-						        $webhook_url = 'https://hooks.zapier.com/hooks/catch/9950511/2tg9gob/';
-						        $webhook_data = array(
-						            'dates' => $_POST['dates'],
-						            'address' => $_POST['address'],
-						            'adults' => $_POST['adults'],
-						            'child' => $_POST['child'],
-						            'notes' => $_POST['notes'],
-						            'group_name' => $_POST['group_name'],
-						            'group_type' => $_POST['group_type'],
-						            'your_name' => $_POST['your_name'],
-						            'email' => $_POST['email'],
-						            'telephone' => $_POST['telephone']
-						        );
-						
-						        // Use cURL to send the form data to the webhook
-						        $ch = curl_init($webhook_url);
-						        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-						        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-						        curl_setopt($ch, CURLOPT_POST, true);
-						        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($webhook_data));
-						        $result = curl_exec($ch);
-						        curl_close($ch);
-						
-
-						
+	
 ?>
 <!-- END SEND MAIL SCRIPT -->   
 
