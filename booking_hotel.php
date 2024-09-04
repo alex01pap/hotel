@@ -37,11 +37,9 @@
 <body onLoad="setTimeout('delayedRedirect()', 8000)" style="background-color:#fff;">
 <?php
 
-<?php
-    ini_set('display_errors', 1);
+ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-?>
 
 						$mail = $_POST['email'];
 						$to = "alex01pap@gmail.com";/* YOUR EMAIL HERE */
