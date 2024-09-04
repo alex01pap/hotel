@@ -89,21 +89,27 @@
 					            'telephone' => $_POST['telephone']
 					        );
 					
-					        // Use cURL to send the form data to the webhook
-					        $ch = curl_init($webhook_url);
-					        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-					        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-					        curl_setopt($ch, CURLOPT_POST, true);
-					        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($webhook_data));
-					        $result = curl_exec($ch);
-					        curl_close($ch);
-					
-					        // Check if Zapier webhook submission was successful
-					        if ($result === FALSE) {
-					            // Handle webhook error
-					            echo "There was an issue submitting your request to Zapier.";
-					        }
-					    }
+						// Prepare the data for sending (JSON encode the data)
+						        $options = array(
+						            'http' => array(
+						                'header'  => "Content-Type: application/json\r\n",
+						                'method'  => 'POST',
+						                'content' => json_encode($webhook_data),
+						            ),
+						        );
+						
+						        // Create a stream context
+						        $context  = stream_context_create($options);
+						
+						        // Send the request to the Zapier webhook
+						        $result = file_get_contents($webhook_url, false, $context);
+						
+						        // Check if the webhook submission was successful
+						        if ($result === FALSE) {
+						            // Handle webhook error
+						            echo "There was an issue submitting your request to Zapier.";
+						        }
+						    }
 ?>
 <!-- END SEND MAIL SCRIPT -->   
 
