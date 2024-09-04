@@ -37,6 +37,22 @@
 <body onLoad="setTimeout('delayedRedirect()', 8000)" style="background-color:#fff;">
 <?php
 
+						// Google reCAPTCHA secret key
+						$recaptcha_secret = '6LdMRzYqAAAAAOhrc7k3V5-XSBxa03lRjeLmSOFG'; // Replace with your Google reCAPTCHA secret key
+						// Verify reCAPTCHA
+						
+						    if (isset($_POST['g-recaptcha-response'])) {
+						        $recaptcha_response = $_POST['g-recaptcha-response'];
+						
+						        // Make API request to verify reCAPTCHA response
+						        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
+						        $responseKeys = json_decode($response, true);
+						
+						        if (intval($responseKeys["success"]) !== 1) {
+						            // reCAPTCHA failed - handle the error
+						            echo "CAPTCHA verification failed. Please go back and try again.";
+						        } else {
+						            // reCAPTCHA passed, process the form   
 
 						$mail = $_POST['email'];
 						$to = "alex01pap@gmail.com";/* YOUR EMAIL HERE */
